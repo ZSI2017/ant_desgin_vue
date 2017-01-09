@@ -4,6 +4,7 @@
 </style>
 
  <template>
+     <my-header :msgheader.sync="mag"></my-header>
      <header>
                <p>
                   这里是第三个路由
@@ -23,6 +24,23 @@
 
 
 <script>
+    import {changeIndex} from "../vuex/actions";
 
-
+    export default{
+          data(){
+              return{
+                  mag:{
+                    title:"third"
+                  }
+              }
+          },
+         vuex:{
+             actions:{
+                   change:changeIndex
+             }
+         },
+         ready(){
+              this.change(3);
+         }
+    }
 </script>

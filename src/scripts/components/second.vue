@@ -18,6 +18,7 @@
 
 
 <template>
+     <my-header :msgheader.sync="mag"></my-header>
        <!-- 使用自定义 组件  -->
        <location> </location>
        <p>当前路径：{{$route.path}}</p>
@@ -25,7 +26,7 @@
        <ul>
 
           <li class="myLi" v-for="item in datasource" >
-                <p class="myTitle">{{item.title}}</p>
+                <p class="myTitle">{{$route.params.name +item.title}}</p>
                 <p>{{item.no1}}</p>
                 <p>{{item.no2}}</p>
                 <p>{{item.no3}}</p>
@@ -38,15 +39,23 @@
 
 <script>
 
-
+ import { changeIndex} from "../vuex/actions";
  export default {
      data(){
             return {
+              mag:{
+                  title:"second"
+              },
                 datasource:[]
             }
      },
- created(){
+     vuex:{
+       actions: {
+            change:changeIndex
+       }
 
+     },
+ created(){
       this.$http.get("/rest/list3")
          .then(
              (res) =>{
@@ -65,6 +74,7 @@
 
 },
 ready(){
+      this.change(2);
       console.log(this.$route)
 }
 }

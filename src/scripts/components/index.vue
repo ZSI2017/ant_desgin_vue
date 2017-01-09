@@ -4,7 +4,6 @@
 </style>
 
 
-
 <template>
   <div>
      <div>
@@ -33,7 +32,8 @@
               return{
                       list:[
                         {path:"/index/",icon:"&#xe78b;",name:"列表1"},
-                        {path:"/index/second",icon:"&#xe78b;",name:"列表3"},
+                        {path:'/index/four',icon:'',name:'列表2'},
+                        {path:"/index/second/默认",icon:"&#xe78b;",name:"列表3"},
                         {path:"/index/third",icon:"&#xe78b;",name:"列表4"}
                         ]
               }

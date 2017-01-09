@@ -8,8 +8,8 @@ module.exports = {
      // sourcemap
       devtool:'source-map',
 
+    
     //  启动入口
-
     output:{
          path:__dirname+ '/prd',
          filename:'bundle.js'
@@ -55,10 +55,17 @@ module.exports = {
       vue:{
             loaders:{
                  js:"babel",
-                 css:ET.extract('vue-style-loader','css','sass')
+                 scss:['vue-style-loader','css','sass'].join('!'),
+                 css:ET.extract('vue-style-loader','css','scss'),
             }
       },
       plugins:[
+        // webpack　　自带的一个压缩插件 UglifyJsPlugin,只需要在配置文件中引入即可
+      new webpack.optimize.UglifyJsPlugin({
+            compress:{
+               warnings:false
+            }
+      }),
            //将scss文件单独经过scss,css 加载器编译后打包到一个单独的文件中bundle.css,
           new ET('bundle.css',{
               allChunks:true

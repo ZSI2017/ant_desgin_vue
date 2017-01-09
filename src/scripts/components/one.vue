@@ -8,12 +8,10 @@
 </style>
 
 <template>
+   <my-header :msgheader.sync="mag"></my-header>
   <div class="am-list ">
-
-
-
       <a v-for="item in datasource"
-         v-link="{name:'second', params: {name:'liqi'}}"
+         v-link="{name:'second', params: {name:item.title}}"
        class="am-list-item" style="border-bottom:.01rem solid #5c5c5c">
         <div class="am-list-thumb">
           <!-- A11Y: alt 信息增加对图片内容或者目的描述，如「xxx头像」 -->
@@ -37,14 +35,22 @@
 </template>
 
 <script>
+   import  {changeIndex} from "../vuex/actions";
+
   export default{
         data(){
             return{
+              mag:{
+                  title:"one"
+              },
               datasource:[]
 
             }
         },
         vuex:{
+           actions:{
+              change:changeIndex
+           }
 
         },
         created(){
@@ -61,8 +67,8 @@
 
         },
         ready(){
-
-        let router = new VueRouter();
+           this.change(0);
+          let router = new VueRouter();
         // setTimeout(function(){
         //       router.go({path:'/index/third'});
         //       console.log("跳转、");

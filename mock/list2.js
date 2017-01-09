@@ -7,7 +7,7 @@ module.exports = {
           "安全保障","便捷代寄"
          ]},
        {
-        title:"附近快递网点",
+        title:"顺丰",
         subtitle:"找就近网点快速提供服务",
         little:[
          "快速上门","安全保障"]

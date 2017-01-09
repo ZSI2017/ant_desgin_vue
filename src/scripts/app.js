@@ -7,6 +7,13 @@ import second from "./components/second.vue";
 
 import index from "./components/index.vue";
 
+import four from "./components/four.vue";
+
+
+//  在最外层的app.js 文件中注册 自定义的search 组件
+  import header from "./components/header.vue";
+      var Mycomponent = Vue.extend(header);
+      Vue.component('myHeader',Mycomponent);
 
 // 引入store 进行全局状态管理
 import store from "./vuex/store";
@@ -27,11 +34,6 @@ let router = new VueRouter();
 let App = Vue.extend({
          store:store
 });
-Vue.component('todo',{
-      props:['todo'],
-      template:'<li>  asdfsdf</li>'
-})
-
 router.map({
     "/index":{
           name:"index",
@@ -41,13 +43,17 @@ router.map({
                      name:'first',
                      component:first
                 },
-                "/second/:userId":{
+                "/second/:name":{
                       name:"second",
                       component:second
                 },
                 "/third":{
                      name:"third",
                      component:third
+                },
+                "/four":{
+                     name:'four',
+                     component:four
                 }
           }
     }
